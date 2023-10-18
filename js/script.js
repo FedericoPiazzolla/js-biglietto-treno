@@ -5,17 +5,29 @@ console.log(userKm, userAge);
 
 // Logica del programma
 
-// Determino l'età dell'utente
+// Calcolo costo biglietto
+const ticketPriceKm = 0.21;
+const ticketPriceTotal = ticketPriceKm * userKm;
+const ticketRounded = Math.round((ticketPriceTotal + Number.EPSILON ) * 100) / 100;
+console.log(ticketRounded)
+
+// Determino l'età dell'utente e la propria scontistica
+
 if (userAge > 65) {
+  const discount = (ticketRounded / 100) * 40;
+  const finalPrice = ticketRounded - discount;
+  const finalPriceRounded = Math.round((finalPrice + Number.EPSILON ) * 100) / 100;
+  console.log(finalPriceRounded)
   console.log("over 65");
 } else if (userAge >= 18) {
   console.log("maggiorenne");
 } else {
-  console.log("minorenne");
+  const discount = (ticketRounded / 100) * 20;
+  const finalPrice = ticketRounded - discount;
+  const finalPriceRounded = Math.round((finalPrice + Number.EPSILON) * 100) / 100;
+  console.log(finalPriceRounded)
+  console.log(`essendo minorenne gode della scontistica del 20% : ${finalPriceRounded}€`);
 }
 
-// Calcolo costo biglietto
-const ticketPriceKm = 0.21;
-const ticketPriceTotal = ticketPriceKm * userKm;
-const ticketPriceRounded = Math.round((ticketPriceTotal + Number.EPSILON ) * 100) / 100;
-console.log(ticketPriceRounded)
+// Output
+document.getElementById("message").innerHTML = finalPriceRounded
