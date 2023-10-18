@@ -5,6 +5,15 @@ console.log(userKm, userAge);
 
 // Logica del programma
 
+// Determino l'età dell'utente
+if (userAge > 65) {
+  console.log("over 65");
+} else if (userAge >= 18) {
+  console.log("maggiorenne");
+} else {
+  console.log("minorenne");
+}
+
 // Calcolo costo biglietto
 const ticketPriceKm = 0.21;
 const ticketPriceTotal = ticketPriceKm * userKm;
