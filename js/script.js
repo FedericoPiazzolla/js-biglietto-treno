@@ -12,18 +12,20 @@ const ticketRounded = Math.round((ticketPriceTotal + Number.EPSILON ) * 100) / 1
 console.log(ticketRounded)
 
 // Determino l'età dell'utente e la propria scontistica
-
+let discount = "";
+let finalPrice = "";
+let finalPriceRounded = "";
 if (userAge > 65) {
-  const discount = (ticketRounded / 100) * 40;
-  const finalPrice = ticketRounded - discount;
-  const finalPriceRounded = Math.round((finalPrice + Number.EPSILON ) * 100) / 100;
+  discount = (ticketRounded / 100) * 40;
+  finalPrice = ticketRounded - discount; //uguale a riga 28
+  finalPriceRounded = Math.round((finalPrice + Number.EPSILON ) * 100) / 100;
   console.log(finalPriceRounded)
   console.log("over 65");
 } else if (userAge >= 18) {
   console.log("maggiorenne");
 } else {
   const discount = (ticketRounded / 100) * 20;
-  const finalPrice = ticketRounded - discount;
+  const finalPrice = ticketRounded - discount; //uguale a riga 20
   const finalPriceRounded = Math.round((finalPrice + Number.EPSILON) * 100) / 100;
   console.log(finalPriceRounded)
   console.log(`essendo minorenne gode della scontistica del 20% : ${finalPriceRounded}€`);
