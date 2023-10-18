@@ -12,24 +12,26 @@ const ticketRounded = Math.round((ticketPriceTotal + Number.EPSILON ) * 100) / 1
 console.log(ticketRounded)
 
 // Determino l'età dell'utente e la propria scontistica
-let discount = "";
-let finalPrice = "";
 let finalPriceRounded = "";
+let message = "";
+
 if (userAge > 65) {
-  discount = (ticketRounded / 100) * 40;
-  finalPrice = ticketRounded - discount; //uguale a riga 28
+  const discount = (ticketRounded / 100) * 40;
+  const finalPrice = ticketRounded - discount; //uguale a riga 28
   finalPriceRounded = Math.round((finalPrice + Number.EPSILON ) * 100) / 100;
   console.log(finalPriceRounded)
-  console.log("over 65");
+  message = `essendo over-65 gode della scontistica del 40% : invece di pagare ${ticketRounded}€ pagherà solo ${finalPriceRounded}€, le auguro una buona giornata!`;
+
 } else if (userAge >= 18) {
   console.log("maggiorenne");
+  message = `Purtoppo non usufruisce di nessuna scontistica : dovrà pagare ${ticketRounded}€, le auguro una buona giornata!`
 } else {
   const discount = (ticketRounded / 100) * 20;
   const finalPrice = ticketRounded - discount; //uguale a riga 20
-  const finalPriceRounded = Math.round((finalPrice + Number.EPSILON) * 100) / 100;
+  finalPriceRounded = Math.round((finalPrice + Number.EPSILON) * 100) / 100;
   console.log(finalPriceRounded)
-  console.log(`essendo minorenne gode della scontistica del 20% : ${finalPriceRounded}€`);
+  message = `Essendo minorenne gode della scontistica del 20% : invece di pagare ${ticketRounded}€ pagherà solo ${finalPriceRounded}€, le auguro una buona giornata!`;
 }
 
 // Output
-document.getElementById("message").innerHTML = finalPriceRounded
+document.getElementById("message").innerHTML = message ;
